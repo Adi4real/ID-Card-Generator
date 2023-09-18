@@ -7,15 +7,27 @@
 </head>
 <body>
 
-    <div>NAMEEEE :<span id="name"></span></div>
+    <div>NAME :<span id="name"></span></div>
     <div>MAIL :<span id="mail"></span></div>
+    <div>PHONE :<span id="phone"></span></div>
+    <div>DOB :<span id="dob"></span></div>
+    <div>COUNTRY :<span id="country"></span></div>
+
     <script>
 
         const Name = localStorage.getItem('name');
         const Mail = localStorage.getItem('mail');
+        const Phone = localStorage.getItem('phone');
+        const Dob = localStorage.getItem('dob');
+        const Country = localStorage.getItem('country');
+
 
         document.getElementById('name').textContent = Name;
         document.getElementById('mail').textContent = Mail;
+        document.getElementById('phone').textContent = Phone;
+        document.getElementById('dob').textContent = Dob;
+        document.getElementById('country').textContent = Country;
+
     </script>
 </body>
 </html>

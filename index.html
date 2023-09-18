@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta hGttp-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>IDG updATED</title>
+    <title>ID Card Generator</title>
     <!---Custom CSS File--->
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -26,11 +26,11 @@
         <div class="column">
           <div class="input-box">
             <label>Phone Number</label>
-            <input type="tel" placeholder="Enter phone number" required />
+            <input type="tel" id="PHONE" placeholder="Enter phone number" required />
           </div>
           <div class="input-box">
             <label>Birth Date</label>
-            <input type="date" placeholder="Enter birth date" required />
+            <input type="date" id="DOB" placeholder="Enter birth date" required />
           </div>
         </div>
         <div class="gender-box">
@@ -38,7 +38,7 @@
           <div class="gender-option">
             <div class="gender">
               <input type="radio" id="check-male" name="gender" checked />
-              <label for="check-male">male</label>
+              <label for="check-male">Male</label>
             </div>
             <div class="gender">
               <input type="radio" id="check-female" name="gender" />
@@ -51,20 +51,11 @@
           <input type="text" placeholder="Enter street address" required />
           <input type="text" placeholder="Enter street address line 2" required />
           <div class="column">
-            <!-- <div class="select-box">
-              <select>
-                <option hidden>Country</option>
-                <option>America</option>
-                <option>Japan</option>
-                <option>India</option>
-                <option>Nepal</option>
-              </select>
-            </div> -->
             <input type="text" placeholder="Enter your city" required />
           </div>
           <div class="column">
             <input type="text" placeholder="Enter your region" required />
-            <select class="form-select" id="country" name="country">
+            <select class="form-select" id="COUNTRY" name="country">
               <option>select country</option>
               <option value="AF">Afghanistan</option>
               <option value="AX">Aland Islands</option>
@@ -321,7 +312,11 @@
           </select>
           </div>
         </div>
-      
+        
+        <div class="input-box">
+          <label>Upload Photo</label>
+          <input type="file" id="photo" accept="image/*" required />
+      </div>
           
         <button type="submit">Generate</button>
        
@@ -332,17 +327,35 @@
       const form = document.getElementById("form");
       const name = document.getElementById("NAME");
       const mail1 = document.getElementById("MAIL");
+      const phone = document.getElementById("PHONE");
+      const dob = document.getElementById("DOB");
+      const country = document.getElementById("COUNTRY");
+
 
       form.addEventListener('submit', function(e){
         e.preventDefault();
 
         const name_value = name.value;
         const mail_value = mail1.value;
+        const phone_value = phone.value;
+        const dob_value = dob.value;
+        const country_value = country.value;
 
         localStorage.setItem('name', name_value);
         localStorage.setItem('mail', mail_value)
+        localStorage.setItem('phone', phone_value)
+        localStorage.setItem('dob', dob_value)
+        localStorage.setItem('country', country_value)
 
         window.location.href = "ID.html";
+
+        const photoFile = document.getElementById('photo').files[0];
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                localStorage.setItem('photo', event.target.result);
+                window.location.href = "ID.html";
+            }
+            reader.readAsDataURL(photoFile);
       })
     </script>
   </body>
