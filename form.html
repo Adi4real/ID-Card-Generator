@@ -12,7 +12,7 @@
   <body>
     <section class="container">
       <header>Details for Identity Card</header>
-      <form action="#" class="form" id="form"> <!-- Added id="form" -->
+      <form action="#" class="form" id="form" method="post" autocomplete="off"> <!-- Added id="form" -->
         <div class="input-box">
           <label>Full Name</label>
           <input type="text" id="NAME" placeholder="Enter full name" required />
@@ -37,11 +37,11 @@
           <h3>Gender</h3>
           <div class="gender-option">
             <div class="gender">
-              <input type="radio" id="check-male" name="gender" checked />
+              <input type="radio" id="check-male" name="gender" value="Male" />
               <label for="check-male">Male</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-female" name="gender" />
+              <input type="radio" id="check-female" name="gender" value="Female" />
               <label for="check-female">Female</label>
             </div>
           </div>
@@ -340,22 +340,19 @@
         const dob_value = dob.value;
         const country_value = country.value;
 
+        const gender = document.querySelector('input[name="gender"]:checked');
+        const gender_value = gender ? gender.value : null;
+      
+
         localStorage.setItem('name', name_value);
         localStorage.setItem('mail', mail_value)
         localStorage.setItem('phone', phone_value)
         localStorage.setItem('dob', dob_value)
         localStorage.setItem('country', country_value)
-
+        localStorage.setItem('gender', gender_value);
+      
         window.location.href = "ID.html";
-
-        const photoFile = document.getElementById('photo').files[0];
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                localStorage.setItem('photo', event.target.result);
-                window.location.href = "ID.html";
-            }
-            reader.readAsDataURL(photoFile);
-      })
+      });
     </script>
   </body>
 </html>

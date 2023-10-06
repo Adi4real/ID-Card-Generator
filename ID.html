@@ -3,24 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ID Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .id-card {
+            border: 2px solid #000;
+            padding: 20px;
+            max-width: 400px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .id-card img {
+            max-width: 100px;
+            border-radius: 50%;
+            margin: 10px auto;
+            display: block;
+            border: 2px solid #000;
+        }
+
+        .info {
+            margin: 10px 0;
+        }
+
+        .info span {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <div>NAME :<span id="name"></span></div>
-    <div>MAIL :<span id="mail"></span></div>
-    <div>PHONE :<span id="phone"></span></div>
-    <div>DOB :<span id="dob"></span></div>
-    <div>COUNTRY :<span id="country"></span></div>
+    <div class="id-card">
+        <img id="photo-preview" src="" alt="Uploaded Photo">
+        <div class="info">NAME: <span id="name"></span></div>
+        <div class="info">MAIL: <span id="mail"></span></div>
+        <div class="info">PHONE: <span id="phone"></span></div>
+        <div class="info">DOB: <span id="dob"></span></div>
+        <div class="info">COUNTRY: <span id="country"></span></div>
+        <div id="gender"></div>
+    </div>
 
     <script>
-
         const Name = localStorage.getItem('name');
         const Mail = localStorage.getItem('mail');
         const Phone = localStorage.getItem('phone');
         const Dob = localStorage.getItem('dob');
         const Country = localStorage.getItem('country');
-
 
         document.getElementById('name').textContent = Name;
         document.getElementById('mail').textContent = Mail;
@@ -28,6 +66,23 @@
         document.getElementById('dob').textContent = Dob;
         document.getElementById('country').textContent = Country;
 
+        document.addEventListener("DOMContentLoaded", function() {
+            const genderElement = document.getElementById("gender");
+            const genderValue = localStorage.getItem("gender");
+
+            if (genderValue) {
+                genderElement.innerText = `GENDER: ${genderValue}`;
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const photoPreview = document.getElementById("photo-preview");
+            const photoData = localStorage.getItem("photo");
+
+            if (photoData) {
+                photoPreview.src = photoData;
+            }
+        });
     </script>
 </body>
 </html>
