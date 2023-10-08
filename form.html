@@ -312,10 +312,7 @@
           </div>
         </div>
         
-        <div class="input-box">
-          <label>Upload Photo</label>
-          <input type="file" id="photo" accept="image/*" required />
-      </div>
+        <div class="info">PHOTO: <input type="file" id="photo" accept="image/*"></div>
           
         <button type="submit">Generate</button>
        
@@ -330,6 +327,23 @@
       const dob = document.getElementById("DOB");
       const country = document.getElementById("COUNTRY");
 
+      document.addEventListener("DOMContentLoaded", function() {
+  const photoPreview = document.getElementById("photo-preview");
+  const photoInput = document.getElementById("photo");
+
+  photoInput.addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+      const photoData = reader.result;
+      localStorage.setItem("photo", photoData);
+      photoPreview.src = photoData;
+    }
+
+    reader.readAsDataURL(file);
+  });
+});
 
       form.addEventListener('submit', function(e){
         e.preventDefault();

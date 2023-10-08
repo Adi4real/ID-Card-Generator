@@ -6,44 +6,63 @@
     <title>ID Card</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: capitalize;
+}
 
-        .id-card {
-            border: 2px solid #000;
-            padding: 20px;
-            max-width: 400px;
-            text-align: center;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+.id-card {
+    border: 2px solid #000;
+    padding: 20px;
+    width: 300px;
+    height: auto;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
-        .id-card img {
-            max-width: 100px;
-            border-radius: 50%;
-            margin: 10px auto;
-            display: block;
-            border: 2px solid #000;
-        }
+.id-card img {
+    width: auto;
+    height: 100px;
+    margin: 10px auto;
+    display: block;
+    
+}
 
-        .info {
-            margin: 10px 0;
-        }
+.info {
+    margin: 10px 0;
+    text-align: center;
+}
 
-        .info span {
-            font-weight: bold;
-            margin-right: 10px;
-        }
+.info span {
+    margin-right: 10px;
+    color: #333;
+}
+
+.info td {
+    text-align: right;
+    padding: 5px;
+
+}
+
+.info table {
+    width: 100%;
+}
+
+        
     </style>
 </head>
 <body>
 
-    <div class="id-card">
+    <!-- <div class="id-card">
         <img id="photo-preview" src="" alt="Uploaded Photo">
         <div class="info">NAME: <span id="name"></span></div>
         <div class="info">MAIL: <span id="mail"></span></div>
@@ -51,6 +70,35 @@
         <div class="info">DOB: <span id="dob"></span></div>
         <div class="info">COUNTRY: <span id="country"></span></div>
         <div id="gender"></div>
+    </div> -->
+    <div class="id-card">
+        <img id="photo-preview" src="" alt="Uploaded Photo">
+        <table>
+            <tr>
+                <td>NAME:</td>
+                <td><span id="name"></span></td>
+            </tr>
+            <tr>
+                <td>MAIL:</td>
+                <td><span id="mail"></span></td>
+            </tr>
+            <tr>
+                <td>PHONE:</td>
+                <td><span id="phone"></span></td>
+            </tr>
+            <tr>
+                <td>DOB:</td>
+                <td><span id="dob"></span></td>
+            </tr>
+            <tr>
+                <td>COUNTRY:</td>
+                <td><span id="country"></span></td>
+            </tr>
+            <tr>
+                <td>GENDER:</td>
+                <td><div id="gender"></div></td>
+            </tr>
+        </table>
     </div>
 
     <script>
@@ -71,18 +119,18 @@
             const genderValue = localStorage.getItem("gender");
 
             if (genderValue) {
-                genderElement.innerText = `GENDER: ${genderValue}`;
+                genderElement.innerText = `${genderValue}`;
             }
         });
 
         document.addEventListener("DOMContentLoaded", function() {
-            const photoPreview = document.getElementById("photo-preview");
-            const photoData = localStorage.getItem("photo");
+  const photoPreview = document.getElementById("photo-preview");
+  const photoData = localStorage.getItem("photo");
 
-            if (photoData) {
-                photoPreview.src = photoData;
-            }
-        });
+  if (photoData) {
+    photoPreview.src = photoData;
+  }
+});
     </script>
 </body>
 </html>
